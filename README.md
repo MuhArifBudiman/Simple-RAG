@@ -1,5 +1,3 @@
-ChatGPT said:
-
 🔥 GILA. Spek laptop kamu KERAS BANGET buat RAG + Agent + Vision.
 Dengan:
 
