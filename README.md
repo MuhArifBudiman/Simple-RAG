@@ -1,63 +1,5 @@
-🔥 GILA. Spek laptop kamu KERAS BANGET buat RAG + Agent + Vision.
-Dengan:
-
-✅ RAM 32 GB
-
-✅ RTX 4060 8GB VRAM
-
-✅ Intel i9-14900H
-
-Kamu bisa jalanin:
-
-Local LLM (Mistral, LLaMA, DeepSeek)
-
-Local Embedding (BGE, E5, Instructor)
-
-Vector DB lokal (FAISS, Qdrant, Chroma)
-
-OCR + Vision + RAG
-
-Agentic AI multi-tool
-
-➡️ Ini sudah level production-ready laptop, bukan level belajar receh lagi.
-
-✅ MASTER PROJECT PLAN – RAG + AGENT + VISION
-
-Target: AI ENGINEER GENERATIVE + MULTIMODAL PORTFOLIO
-
-Project ini bisa kamu pakai:
-
-✅ GitHub
-
-✅ CV
-
-✅ Interview System Design
-
-✅ Demo Web App
-
-🧠 PROJECT BESAR:
-Multimodal AI Assistant with RAG & Vision Agent
-
-👉 Fungsi:
-
-Upload PDF / Gambar / Video
-
-Sistem:
-
-Ekstrak teks (OCR)
-
-Deteksi objek (opsional)
-
-Simpan ke Vector DB
-
-Bisa tanya isi dokumen
-
-Bisa reasoning & ambil keputusan
-
-Bisa pakai tools otomatis (Agent)
-
-🗺️ ROADMAP 4 FASE (STEP BY STEP)
-🔹 FASE 1 — CORE RAG ENGINE (WEEK 1)
+# 🗺️ ROADMAP 4 FASE (STEP BY STEP)
+- FASE 1 — CORE RAG ENGINE (WEEK 1)
 
 🎯 Target: Kamu ngerti RAG internal logic 100%
 
@@ -72,7 +14,7 @@ Bisa pakai tools otomatis (Agent)
 
 “RAG CLI Assistant”
 
-🔹 FASE 2 — RAG API + UI (WEEK 2)
+- FASE 2 — RAG API + UI (WEEK 2)
 
 🎯 Target: Jadi AI Backend Engineer
 
@@ -92,7 +34,7 @@ Bisa pakai tools otomatis (Agent)
 
 “Web-based RAG Chatbot”
 
-🔹 FASE 3 — AGENTIC RAG SYSTEM (WEEK 3)
+- FASE 3 — AGENTIC RAG SYSTEM (WEEK 3)
 
 🎯 Target: Masuk Agent Engineering
 
@@ -107,7 +49,7 @@ Bisa pakai tools otomatis (Agent)
 
 “AI Document Analyst Agent”
 
-🔹 FASE 4 — VISION + RAG (WEEK 4)
+- FASE 4 — VISION + RAG (WEEK 4)
 
 🎯 Target: Kamu beda sendiri dari anak NLP
 
@@ -121,7 +63,7 @@ Bisa pakai tools otomatis (Agent)
 
 “Multimodal Enterprise AI Assistant”
 
-🧰 STACK TEKNOLOGI FINAL
+-- STACK TEKNOLOGI FINAL
 Layer Stack
 LLM mistral / deepseek / llama
 Embedding BGE / E5
@@ -132,7 +74,7 @@ UI Streamlit
 Agent LangGraph
 Vision YOLOv8
 Storage SQLite
-✅ SETIAP FASE ADA PORTFOLIO-NYA
+-- SETIAP FASE ADA PORTFOLIO-NYA
 Fase Judul Repo
 1 local-rag-engine
 2 rag-fastapi-backend
