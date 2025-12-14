@@ -122,11 +122,208 @@ vector save
 search
 
 LLM response
+---
 
-👉 Kamu mau mulai langsung dari:
+# PROJECT SUMMARY
+AI-Assisted CV Screening & Job Matching (RAG-based)
+1️⃣ OBJECTIVE (Tujuan Utama)
 
-A. RAG versi API dulu (cepat & simpel)
-B. RAG full LOCAL (lebih hardcore)
+Membangun sistem AI yang membantu HR / recruiter untuk:
 
-Jawab A atau B.
-Begitu kamu pilih, aku langsung kirimkan starter project FASE 1 siap jalan. 🚀
+📄 Memahami isi CV secara otomatis (bukan sekadar membaca)
+
+🔍 Mencocokkan CV dengan requirement pekerjaan
+
+📊 Memberi penilaian awal (screening stage 1):
+
+seberapa relevan skill & pengalaman kandidat
+
+apa gap yang ada
+
+estimasi kelolosan awal (bukan keputusan final)
+
+❗ BUKAN menggantikan HR
+✔ Membantu HR menghemat waktu & lebih objektif
+
+2️⃣ CORE USE CASE (Alur Utama)
+🔹 User Flow
+
+User / HR upload CV (PDF)
+
+Sistem:
+
+Extract text (OCR jika perlu)
+
+Chunk CV berdasarkan struktur semantik
+
+Sistem juga punya:
+
+Base knowledge job requirement (CSV / dataset)
+
+AI:
+
+Membandingkan CV ↔ Job requirement
+
+Memberi reasoned evaluation
+
+Output:
+
+Ringkasan kecocokan
+
+Highlight strength & weakness
+
+Estimasi kelolosan tahap awal
+
+3️⃣ SYSTEM FLOW (Teknis, dari ujung ke ujung)
+PDF CV (user upload)
+        ↓
+PDF Reader / OCR
+        ↓
+Text Cleaning (minimal)
+        ↓
+Semantic Chunking (per section)
+        ↓
+Embedding (on-the-fly)
+        ↓
+Vector Search (FAISS)
+        ↓
+Retrieve Relevant CV Parts + Job Knowledge
+        ↓
+LLM Reasoning (RAG)
+        ↓
+HR-style Evaluation Output
+
+4️⃣ RAG STRATEGY (Hybrid – dan ini penting)
+🔹 A. On-the-fly Knowledge
+
+CV user
+
+ephemeral (tidak disimpan lama)
+
+cepat & privacy-friendly
+
+🔹 B. Base Knowledge (Persistent)
+
+Dataset job (CSV):
+
+role
+
+skill requirement
+
+experience level
+
+weight per skill
+
+Di-embedding sekali
+
+Dipakai berulang
+
+➡️ Hybrid RAG = realistic industry approach
+(bukan demo RAG doang)
+
+5️⃣ WHAT MAKES THIS PROJECT “NON-BASIC”
+
+❌ bukan sekadar:
+
+chat with PDF
+
+ask question → answer
+
+✔ tapi:
+
+structure-aware chunking
+
+domain-specific reasoning (HR)
+
+scoring + explanation
+
+multi-knowledge source (CV + job data)
+
+6️⃣ TECH STACK (yang kita pakai & kenapa)
+🧠 LLM
+
+Groq (LLaMA-based)
+
+fast
+
+cocok reasoning
+
+murah / gratis tier friendly
+
+📄 Document Processing
+
+pypdf
+
+pytesseract (OCR fallback)
+
+pdf2image (jika scanned)
+
+🧩 Chunking & Logic
+
+Python native
+
+rule-based heading detection
+
+semantic CV sectioning
+
+🔢 Embedding
+
+sentence-transformers
+atau
+
+embedding API (jika mau)
+
+🧠 Vector Store
+
+FAISS
+
+in-memory (CV)
+
+persistent (job dataset)
+
+🔎 Retrieval
+
+cosine similarity
+
+top-k per section
+
+🧠 RAG Reasoning
+
+custom prompt
+
+HR-style evaluation logic
+
+explainability oriented
+
+🖥️ UI (opsional / nanti)
+
+Streamlit
+
+upload CV
+
+select job role
+
+view scoring
+
+7️⃣ DELIVERABLE YANG REALISTIS
+Output AI (contoh):
+
+Estimated Match Score: 78%
+
+Strengths:
+
+Strong ML & CV background
+
+Experience deploying AI systems
+
+Gaps:
+
+Limited MLOps exposure
+
+No cloud production mention
+
+Recommendation:
+
+Suitable for technical interview
+
+May need system design assessment
