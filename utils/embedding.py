@@ -22,9 +22,9 @@ class CVEmbeddingStore:
     """
 
     def __init__(self):
-        self.model = SentenceTransformer("all-MiniLM-L6-v2", device="cuda")
+        self.model = SentenceTransformer("all-MiniLM-L6-v2")
         self.dim = self.model.get_sentence_embedding_dimension()
-        self.index = faiss.IndexFlatL2(self.dim)
+        self.index = faiss.IndexFlatIP(self.dim)
 
         # metadata disimpan paralel
         self.metadatas = []
@@ -43,23 +43,34 @@ class CVEmbeddingStore:
                 "source": "cv_upload"
             })
 
-        embeddings = self.model.encode(texts)
+        embeddings = self.model.encode(texts,
+                                       convert_to_numpy=True,
+                                       normalize_embeddings=True)
 
         self.index.add(np.array(embeddings).astype("float32"))
         self.texts.extend(texts)
         self.metadatas.extend(metadatas)
 
     def search(self, query: str, top_k=3):
-        query_embedding = self.model.encode([query])
+        if self.index.ntotal == 0:
+            return []
+        
+        query_embedding = self.model.encode([query],
+                                            convert_to_numpy=True,
+                                            normalize_embeddings=True)
         distances, indices = self.index.search(
             np.array(query_embedding).astype("float32"), top_k
         )
 
         results = []
-        for idx in indices[0]:
+        for dist, idx in zip(distances[0],indices[0]):
+            idx = int(idx)
+            if idx < 0 or idx >= len(self.texts):
+                continue
             results.append({
                 "text": self.texts[idx],
-                "metadata": self.metadatas[idx]
+                "metadata": self.metadatas[idx],
+                "distance": float(dist)
             })
 
         return results
@@ -69,7 +80,7 @@ if __name__ == "__main__":
     pdf_path = os.path.join(DIR_PROJECT, "source",
                             "CV_Muhammad Arif Budiman.pdf")
     if not pdf_path.endswith(".pdf"):
-        print("Please input your pdf")
+        raise ValueError("Please input PDF file")
 
     read_pdf = reader(pdf_path=pdf_path)
     result_chunking = chunk(text=read_pdf)
@@ -80,8 +91,8 @@ if __name__ == "__main__":
     )
 
     results = embedding.search(
-        "How many years of his job in Data Scientist")
-    # print("Pure result", results)
+        "what kind of skills that user to apply as AI Engineer and minimun of his years experience")
+    print("Pure result", results)
     print("============================")
     for r in results:
         print(r["metadata"]["section"])
